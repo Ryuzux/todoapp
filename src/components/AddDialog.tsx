@@ -3,7 +3,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { addTodo } from "@/actions/add";
 import { Status } from "@/types/models";
 
@@ -14,9 +14,14 @@ export function AddDialog({ status }: { status: Status }) {
   async function handleSubmit() {
     await addTodo({ text, status });
 
-    setText("");
     setOpen(false);
   }
+
+  useEffect(() => {
+    if(!open) {
+      setText("");
+    }
+  },[open]);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
