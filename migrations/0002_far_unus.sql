@@ -1,0 +1,2 @@
+CREATE TYPE "public"."status_enum" AS ENUM('backlog', 'todo', 'in progress', 'done', 'deleted');--> statement-breakpoint
+ALTER TABLE "todo" ALTER COLUMN "status" TYPE status_enum USING status::status_enum;
