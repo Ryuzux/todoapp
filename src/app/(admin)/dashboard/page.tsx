@@ -1,14 +1,13 @@
+import { getTodo } from "@/actions/todo/get";
 import { AddDialog } from "@/components/AddDialog";
 import CardTodo from "@/components/CardTodo";
-import { db } from "@/db/drizzle";
-import { todo } from "@/db/schema";
-import { Todos } from "@/types/models";
+import { Todos } from "@/types/todo";
 
 export default async function Dashboard() {
   let todos: Todos[] = [];
 
   try {
-    todos = await db.select().from(todo);
+    todos = await getTodo();
   } catch (error) {
     console.log(error);
     todos = [];

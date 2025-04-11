@@ -50,6 +50,20 @@
       "when": 1744100321718,
       "tag": "0006_perpetual_spirit",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1744359447727,
+      "tag": "0007_cloudy_microchip",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1744374573738,
+      "tag": "0008_dry_ikaris",
+      "breakpoints": true
     }
   ]
 }

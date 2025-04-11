@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Pencil } from "lucide-react";
 import { useState } from "react";
-import { editTodo } from "@/actions/edit";
+import { editTodo } from "@/actions/todo/edit";
 import {
   Select,
   SelectContent,
@@ -20,7 +20,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Status } from "@/types/models";
+import { Status } from "@/types/todo";
+import { toast } from "sonner";
 
 export function EditDialog({
   id,
@@ -37,9 +38,15 @@ export function EditDialog({
 
   async function handleEdit() {
     if (!text.trim()) return;
+    try {
     await editTodo({ id, text, status });
     setOpen(false);
+    toast.success("Todo berhasil diedit");
+  } catch (error) {
+    console.log(error);
+    toast.error("Terjadi kesalahan");
   }
+}
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>

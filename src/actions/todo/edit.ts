@@ -2,7 +2,7 @@
 
 import { db } from "@/db/drizzle";
 import { todo } from "@/db/schema";
-import { Status } from "@/types/models";
+import { Status } from "@/types/todo";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 

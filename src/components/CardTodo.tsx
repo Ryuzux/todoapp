@@ -1,4 +1,4 @@
-import { Status, Todos } from "@/types/models";
+import { Status, Todos } from "@/types/todo";
 import { DeleteDialog } from "./DeleteDialog";
 import { EditDialog } from "./EditDialog";
 import { Card, CardContent } from "./ui/card";

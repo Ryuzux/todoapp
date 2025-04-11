@@ -11,7 +11,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Trash } from "lucide-react";
 import { useState } from "react";
-import { deleteTodo } from "@/actions/delete";
+import { deleteTodo } from "@/actions/todo/delete";
+import { toast } from "sonner";
 
 export function DeleteDialog({
   id
@@ -22,9 +23,15 @@ export function DeleteDialog({
 
   async function handleDelete() {
     if (!id) return;
+    try {
     await deleteTodo({ id });
     setOpen(false);
+    toast.success("Todo berhasil dihapus");
+  } catch (error) {
+    console.log(error);
+    toast.error("Terjadi kesalahan");
   }
+}
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>

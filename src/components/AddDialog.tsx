@@ -4,18 +4,24 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogT
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
-import { addTodo } from "@/actions/add";
-import { Status } from "@/types/models";
+import { addTodo } from "@/actions/todo/add";
+import { Status } from "@/types/todo";
+import { toast } from "sonner";
 
 export function AddDialog({ status }: { status: Status }) {
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("");
 
   async function handleSubmit() {
+    try {
     await addTodo({ text, status });
-
     setOpen(false);
+    toast.success("Todo berhasil ditambahkan");
+  } catch (error) {
+    console.log(error);
+    toast.error("Terjadi kesalahan");
   }
+}
 
   useEffect(() => {
     if(!open) {
